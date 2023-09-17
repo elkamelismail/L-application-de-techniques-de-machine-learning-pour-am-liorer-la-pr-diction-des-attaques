@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attack prediction</title>
+</head>
+  <title>Attack prediction</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+  
+  body {
+    font-family: 'Arimo', sans-serif;
+    background-color: #f2f2f2;
+  }
+  
+  .login {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  form {
+    display: grid;
+    grid-gap: 10px;
+  }
+  
+  label {
+    font-family: 'Hind', sans-serif;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type="submit"] {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #ff3700;
+  }
+  
+  br {
+    display: block;
+    margin: 10px 0;
+  }
+  
+  
+</style>
+
+<body>
+ <div class="login">
+	<h1>Attack Type prediction</h1>
+     <form action="/submit" method="post">
+
+        <label for="duration">Duration:</label>
+        <input type="text" id="duration" name="duration"><br>
+
+        <label for="protocol_type">Protocol Type <small><i>(icmp:0 tcp:1 udp:2)</i></small>:</label>
+        <input type="text" id="protocol_type" name="protocol_type"><br>
+
+        <label for="flag">Flag<small><i>(SF:9 SO:5 REJ:1 RSTR:4 RSTO:2 SH:10 S1:6 S2:7 RSTOS0:3 S3:8 OTH:0)</small></i>:</label>
+        <input type="text" id="flag" name="flag"><br>
+
+        <label for="src_bytes">Source Bytes:</label>
+        <input type="text" id="src_bytes" name="src_bytes"><br>
+
+        <label for="dst_bytes">Destination Bytes:</label>
+        <input type="text" id="dst_bytes" name="dst_bytes"><br>
+
+        <label for="land">Land:</label>
+        <input type="text" id="land" name="land"><br>
+
+        <label for="wrong_fragment">Wrong Fragment:</label>
+        <input type="text" id="wrong_fragment" name="wrong_fragment"><br>
+
+        <label for="urgent">Urgent:</label>
+        <input type="text" id="urgent" name="urgent"><br>
+
+        <label for="hot">Hot:</label>
+        <input type="text" id="hot" name="hot"><br>
+
+        <label for="num_failed_logins">Number of Failed Logins:</label>
+        <input type="text" id="num_failed_logins" name="num_failed_logins"><br>
+
+        <label for="logged_in">Logged In:</label>
+        <input type="text" id="logged_in" name="logged_in"><br>
+
+        <label for="num_compromised">Number of Compromised:</label>
+        <input type="text" id="num_compromised" name="num_compromised"><br>
+
+        <label for="root_shell">Root Shell:</label>
+        <input type="text" id="root_shell" name="root_shell"><br>
+
+        <label for="su_attempted">SU Attempted:</label>
+        <input type="text" id="su_attempted" name="su_attempted"><br>
+
+        <label for="num_file_creations">Number of File Creations:</label>
+        <input type="text" id="num_file_creations" name="num_file_creations"><br>
+
+        <label for="num_shells">Number of Shells:</label>
+        <input type="text" id="num_shells" name="num_shells"><br>
+
+        <label for="num_access_files">Number of Access Files:</label>
+        <input type="text" id="num_access_files" name="num_access_files"><br>
+
+        <label for="is_guest_login">Is Guest Login:</label>
+        <input type="text" id="is_guest_login" name="is_guest_login"><br>
+
+        <label for="count">Count:</label>
+        <input type="text" id="count" name="count"><br>
+
+        <label for="srv_count">Service Count:</label>
+        <input type="text" id="srv_count" name="srv_count"><br>
+
+        <label for="serror_rate">Serror Rate:</label>
+        <input type="text" id="serror_rate" name="serror_rate"><br>
+
+        <label for="rerror_rate">Rerror Rate:</label>
+        <input type="text" id="rerror_rate" name="rerror_rate"><br>
+
+        <label for="srv_rerror_rate">Service Rerror Rate:</label>
+        <input type="text" id="srv_rerror_rate" name="srv_rerror_rate"><br>
+
+        <label for="same_srv_rate">Same Service Rate:</label>
+        <input type="text" id="same_srv_rate" name="same_srv_rate"><br>
+
+        <label for="diff_srv_rate">Different Service Rate:</label>
+        <input type="text" id="diff_srv_rate" name="diff_srv_rate"><br>
+
+        <label for="srv_diff_host_rate">Service Diff Host Rate:</label>
+        <input type="text" id="srv_diff_host_rate" name="srv_diff_host_rate"><br>
+
+        <label for="dst_host_count">Destination Host Count:</label>
+        <input type="text" id="dst_host_count" name="dst_host_count"><br>
+
+        <label for="dst_host_srv_count">Destination Host Service Count:</label>
+        <input type="text" id="dst_host_srv_count" name="dst_host_srv_count"><br>
+
+        <label for="dst_host_diff_srv_rate">Destination Host Different Service Rate:</label>
+        <input type="text" id="dst_host_diff_srv_rate" name="dst_host_diff_srv_rate"><br>
+
+        <label for="dst_host_same_src_port_rate">Destination Host Same Source Port Rate:</label>
+        <input type="text" id="dst_host_same_src_port_rate" name="dst_host_same_src_port_rate"><br>
+
+        <label for="dst_host_srv_diff_host_rate">Destination Host Service Diff Host Rate:</label>
+        <input type="text" id="dst_host_srv_diff_host_rate" name="dst_host_srv_diff_host_rate"><br>
+
+        <input type="submit" value="Predict">
+    </form>
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
